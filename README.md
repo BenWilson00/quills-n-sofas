@@ -1,2 +1,2 @@
 # quills-n-sofas
-generall stuff 'n' thangs
+some writing, and some stuff made out of writing

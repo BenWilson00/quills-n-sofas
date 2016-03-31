@@ -1,0 +1,1 @@
+Press control + alt + f to bring up the macro, then press the index of a phrase you want to enter, or escape to exit. Edit the phrases in the array at the start of the file.

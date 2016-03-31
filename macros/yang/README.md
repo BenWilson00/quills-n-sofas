@@ -1,0 +1,1 @@
+Replace "yang", "anthony" or "tony" with a random counterpart on pressing an endkey after typing them.
