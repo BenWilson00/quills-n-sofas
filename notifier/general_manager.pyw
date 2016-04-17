@@ -7,9 +7,7 @@ del files["general_manager"]
 for file in files:
   files[file] = __import__(file)
 
-print files
-
-shelf = shelve.open("C:\Users\Ben Wilson\common_data")
+shelf = shelve.open("C:\Users\Ben Wilson\Desktop\python_scripts\\notifier\common_data")
 
 for filename in files:
   if not shelf.has_key(filename):
@@ -17,9 +15,7 @@ for filename in files:
 
   shelf[filename] = files[filename].init(data=shelf[filename])
 
-  print shelf[filename]
-
-for i in range(3):
+while True:
+  time.sleep(60)
   for filename in files:
     shelf[filename] = files[filename].do_check(data=shelf[filename], cookies=shelf["cookies"])
-  time.sleep(10)

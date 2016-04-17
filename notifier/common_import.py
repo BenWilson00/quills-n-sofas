@@ -1,8 +1,17 @@
-import urllib2
-import ctypes
-import os
-import time
-import shelve
+import urllib2, ctypes, os, time, shelve, webbrowser
+from subprocess import Popen
+
+MB_YESNOCANCEL = 0x03
+MB_YESNO = 0x04
+ICON_INFO = 0x40
+
+SELECTED_YES = 0x06
+SELECTED_NO = 0x07
+SELECTED_CANCEL = 0x02
+
+def pause(reason=''):
+  if reason != '': raw_input('Paused with message : \n'+reason + '\nPress enter to resume.')
+  else: raw_input('Paused. Press enter to resume.')
 
 def listdir(directory=None):
   files = []
@@ -10,11 +19,11 @@ def listdir(directory=None):
     files.append(file_)
   return files
 
-def notify(title, text, style):
-  ctypes.windll.user32.MessageBoxA(0, text, title, style)
+def notify(title, text, flags):
+  return ctypes.windll.user32.MessageBoxA(0, text, title, flags)
 
-def get_page(hdr):
-  req = urllib2.Request("http://www.fimfiction.net/story/290208/utaan", headers=hdr)
+def urllib_get_page(page, hdr):
+  req = urllib2.Request(page, headers=hdr)
   response = urllib2.urlopen(req)
   return response.read()
 
