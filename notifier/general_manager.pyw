@@ -15,7 +15,11 @@ for filename in files:
 
   shelf[filename] = files[filename].init(data=shelf[filename])
 
+shelf.close()
+
 while True:
   time.sleep(60)
+  shelf = shelve.open("C:\Users\Ben Wilson\Desktop\python_scripts\\notifier\common_data")
   for filename in files:
     shelf[filename] = files[filename].do_check(data=shelf[filename], cookies=shelf["cookies"])
+  shelf.close()
